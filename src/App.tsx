@@ -39,15 +39,15 @@ function App() {
     <>
 
 
-      <header className="site-header">
+<header className="site-header">
 
 
         <nav className="navigation">
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#veiculos">Veículos </a></li>
+            <li><a href="#monster_trucks">Monster Trucks</a></li>
+            <li><a href="#conjuntos_e_expanções_de_pistas">Conjuntos e Expanções de Pistas</a></li>
           </ul>
         </nav>
 
