@@ -8,9 +8,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #333;
+  background-color: red;
   color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px red(0, 0, 0, 0.1);
   border-radius: 0;
   width: 100%;
   margin-bottom: 1.5rem;
@@ -43,23 +43,23 @@
 }
 
 .navigation a:hover {
-  color: #ff6600;
+  color: red;
 }
 
 .header-actions .login-button {
   padding: 0.8rem;
-  background-color: #ff6600;
+  background-color: red;
   color: #fff;
   font-weight: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px red(0, 0, 0, 0.1);
 }
 
 .header-actions .login-button:hover {
-  background-color: #e65c00;
+  background-color: red;
 }
 
 @media (max-width: 768px) {
@@ -121,7 +121,7 @@
 
 .titulo-produto {
   font-size: 60px;
-  color: #333;
+  color: red;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -132,7 +132,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px red(0, 0, 0, 0.1);
   text-align: left;
   transition: transform 0.2s;
   display: flex;
@@ -142,7 +142,7 @@
 
 .produto-item:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px red(0, 0, 0, 0.15);
 }
 
 .container-imagem img {
@@ -158,7 +158,7 @@
 .produto-nome {
   font-size: 1.2em;
   margin: 0.5rem 0;
-  color: #333;
+  color: red;
 }
 
 .produto-preco {
@@ -170,7 +170,7 @@
 
 .produto-descricao {
   font-size: 0.9em;
-  color: #666;
+  color: red;
   margin-bottom: 1rem;
 }
 
@@ -178,7 +178,7 @@
   margin-top: auto;
   width: 100%;
   padding: 0.8rem;
-  background-color: #ff6600;
+  background-color: red;
   color: #fff;
   font-weight: bold;
   border: none;
@@ -189,7 +189,7 @@
 }
 
 .botao-comprar:hover {
-  background-color: #be3c00;
+  background-color: red;
 }
 
 .usuarios-container {
@@ -199,7 +199,7 @@
 
 .titulo-usuario {
   font-size: 60px;
-  color: #333;
+  color: red;
   margin-bottom: 1rem;
   text-align: center;
   margin-bottom: 30px;
@@ -218,20 +218,20 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px red(0, 0, 0, 0.1);
   text-align: left;
   transition: transform 0.2s;
 }
 
 .usuario-item:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px red(0, 0, 0, 0.15);
 }
 
 .usuario-nome {
   font-size: 1.2em;
   margin: 0.5rem 0;
-  color: #333;
+  color: red;
 }
 
 @media (max-width: 1024px) {
