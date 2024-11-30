@@ -9,90 +9,91 @@ type ProdutoType = {
   imagem: string
 }
 
-// Tipo para usuários
-type UsuarioType = {
+type PistaType = {
   id: number,
-  name: string,
-  email: string,
-  created_at: string,
-  updated_at: string
+  nome: string,
+  preco: string,
+  descricao: string,
+  imagem: string
 }
 
 function App() {
+  
   const [produtos, setProdutos] = useState<ProdutoType[]>([])
-  const [usuarios, setUsuarios] = useState<UsuarioType[]>([])
-
-  // useEffect para carregar produtos e usuários
   useEffect(() => {
-    // Buscar os produtos
-    fetch("http://localhost:8000/produtos")
+
+    fetch("https://trabalho-frameworks.onrender.com/produtos")
       .then(resposta => resposta.json())
       .then(dados => setProdutos(dados))
-
-    // Buscar os usuários
-    fetch("https://one022a-marketplace-e90o.onrender.com/usuarios")
-      .then(resposta => resposta.json())
-      .then(dados => setUsuarios(dados))
   }, [])
 
+  const [pistas, setPistas] = useState<PistaType[]>([])
+  useEffect(() => {
+
+    fetch("https://trabalho-frameworks.onrender.com/pistas")
+      .then(resposta => resposta.json())
+      .then(dados => setPistas(dados))
+  }, [])
+
+
+ 
   return (
     <>
-
-
-<header className="site-header">
-
-
+      <header className="site-header">
+        <img src="ok.png" width={150} height={70}></img>
         <nav className="navigation">
           <ul>
             <li><a href="#login">Login</a></li>
             <li><a href="#veiculos">Veículos </a></li>
             <li><a href="#monster_trucks">Monster Trucks</a></li>
-            <li><a href="#conjuntos_e_expanções_de_pistas">Conjuntos e Expanções de Pistas</a></li>
+            <li><a href="#conjuntos_e_expanções_de_pistas">Conjuntos e Expansões de Pistas</a></li>
           </ul>
         </nav>
-
         <div className="header-actions">
           <button className="login-button">Login</button>
         </div>
       </header>
+
       {/* Listagem de Produtos */}
       <div className="produtos-container">
-        <h1 className='titulo-produto'>Produtos</h1>
+        <h1 className="titulo-produto">Produtos</h1>
         <div className="produtos-list">
-          {
-            produtos.map(produto => (
-              <div key={produto.id} className="produto-item">
-                <h3 className="produto-nome">{produto.nome}</h3> {/* Use h3 para o nome do produto */}
-                <div className='container-imagem'>
-                  <img src={produto.imagem} alt="Imagem do produto" />
-                </div>
-                <p className="produto-preco">{produto.preco}</p>
-                <p className="produto-descricao">{produto.descricao}</p>
-                <button className="botao-comprar">Comprar</button>
+          {produtos.map(produto => (
+            <div key={produto.id} className="produto-item">
+              <h3 className="produto-nome">{produto.nome}</h3>
+              <div className="container-imagem">
+                <img src={produto.imagem} alt="Imagem do produto" />
               </div>
-            ))
-          }
+              <p className="produto-preco">{produto.preco}</p>
+              <p className="produto-descricao">{produto.descricao}</p>
+              <button className="botao-comprar">Comprar</button>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Listagem de Usuários */}
-      <div className="usuarios-container">
-        <h1 className='titulo-usuario'>Usuários</h1>
-        <div className="usuarios-list"> {/* Adicionando wrapper */}
-          {
-            usuarios.map(usuario => (
-              <div key={usuario.id} className="usuario-item">
-                <h1 className="usuario-nome">{usuario.name}</h1>
-                <p>Email: {usuario.email}</p>
-                <p>Criado em: {new Date(usuario.created_at).toLocaleDateString()}</p>
-                <p>Atualizado em: {new Date(usuario.updated_at).toLocaleDateString()}</p>
+      {/* Listagem de Pistas */}
+      <div className="pistas-container">
+        <h1 className="titulo-pista">Pistas</h1>
+        <div className="pistas-list">
+          {pistas.map(pista => (
+            <div key={pista.id} className="pista-item">
+              <h3 className="pista-nome">{pista.nome}</h3>
+              <div className="container-imagem">
+                <img src={pista.imagem} alt="Imagem da pista" />
               </div>
-            ))
-          }
-        </div> {/* Fechando a div aqui */}
+              <p className="pista-preco">{pista.preco}</p>
+              <p className="pista-descricao">{pista.descricao}</p>
+              <button className="botao-comprar">Comprar</button>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )
 }
 
+
 export default App
+
+
