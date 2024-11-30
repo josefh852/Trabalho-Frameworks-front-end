@@ -3,9 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: blue;
+  background-color: red;
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,28 +16,34 @@
 }
 
 
+
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: red;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: red;
 }
 
+
 body {
-  margin: 0; 
+  margin: 0;
   padding: 0;  
 }
+
+
 
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  margin: 0; 
+  margin: 0;
   font-size: 36px;
-  color: red; 
+  color: blue;
 }
+
 
 button {
   border-radius: 8px;
@@ -49,12 +57,13 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: blue;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -65,8 +74,9 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;}
+    background-color: #f9f9f9;}
 }
+
 
 header {
   text-align: center; /* Centraliza o texto */
@@ -104,10 +114,11 @@ header {
   text-shadow: 2px 2px 6px red(0, 0, 0, 0.4);
 }
 
+
 /* Ações de login */
 .header-actions .login-button {
   padding: 1rem 2rem;
-  background-color: red; /* Laranja vibrante */
+  background-color: blue; /* Laranja vibrante */
   color: #fff;
   font-weight: bold;
   border: none;
@@ -117,10 +128,12 @@ header {
   box-shadow: 0 4px 8px red(255, 7, 7, 0.1);
 }
 
+
 .header-actions .login-button:hover {
-  background-color: #e65c00;
+  background-color: blue;
   transform: scale(1.05);
 }
+
 
 /* Produtos */
 .produtos-container {
@@ -137,9 +150,10 @@ header {
   gap: 2rem;
 }
 
+
 .titulo-produto {
   font-size: 50px;
-  color: blue; /* Vermelho Hot Wheels */
+  color: red; /* Vermelho Hot Wheels */
   margin-bottom: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -214,10 +228,12 @@ header {
   text-align: center;
 }
 
+
 .botao-comprar:hover {
-  background-color: red;
+  background-color: blue;
   transform: scale(1.05);
 }
+
 
 /* Responsividade */
 @media (max-width: 1024px) {
@@ -247,3 +263,4 @@ header {
     animation: logo-spin infinite 20s linear;
   }
 }
+
