@@ -72,23 +72,23 @@ function App() {
         </div>
       </div>
 
-      {/* Listagem de Pistas */}
-      <div className="pistas-container">
-        <h1 className="titulo-pista">Pistas</h1>
-        <div className="pistas-list">
-          {pistas.map(pista => (
-            <div key={pista.id} className="pista-item">
-              <h3 className="pista-nome">{pista.nome}</h3>
-              <div className="container-imagem">
-                <img src={pista.imagem} alt="Imagem da pista" />
-              </div>
-              <p className="pista-preco">{pista.preco}</p>
-              <p className="pista-descricao">{pista.descricao}</p>
-              <button className="botao-comprar">Comprar</button>
-            </div>
-          ))}
+      <div className="produtos-container">
+  <h1 className="titulo-produto">Pistas</h1>
+  <div className="produtos-list">
+    {pistas.map((pista) => (
+      <div key={pista.id} className="produto-item">
+        <h3 className="produto-nome">{pista.nome}</h3>
+        <div className="container-imagem">
+          <img src={pista.imagem} alt="Imagem da pista" />
         </div>
+        <p className="produto-preco">{pista.preco}</p>
+        <p className="produto-descricao">{pista.descricao}</p>
+        <button className="botao-comprar">Comprar</button>
       </div>
+    ))}
+  </div>
+</div>
+
     </>
   )
 }
