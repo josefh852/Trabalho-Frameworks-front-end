@@ -38,11 +38,12 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: blue;
 }
-button:focus,
-button:focus-visible {
+
+button:focus, button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -59,19 +60,16 @@ button:focus-visible {
 }
 
 header {
-  text-align: center; /* Centraliza o texto */
-  padding: 20px; /* Espaçamento ao redor do conteúdo */
-  background-color: #f4f4f4; /* Cor de fundo */
+  text-align: center; 
+  padding: 20px; 
+  background-color: #f4f4f4; 
 }
 
-/* Efeito de hover no logo */
 .site-header .logo:hover {
   transform: rotate(360deg) scale(1.1);
-  filter: drop-shadow(0 0 10px #ffd700); /* Efeito dourado */
+  filter: drop-shadow(0 0 10px #ffd700); 
 }
 
-
-/* Navegação */
 .navigation ul {
   display: flex;
   gap: 2rem;
@@ -79,7 +77,6 @@ header {
   margin: 0;
   padding: 0;
 }
-
 
 .navigation a {
   color: #fff;
@@ -91,18 +88,14 @@ header {
   transition: color 0.3s ease;
 }
 
-
 .navigation a:hover {
-  color: #ffd700; /* Cor dourada para hover */
+  color: #ffd700;
   text-shadow: 2px 2px 6px red(0, 0, 0, 0.4);
 }
 
-/* Ações de login */
-
-
 .header-actions .login-button {
   padding: 1rem 2rem;
-  background-color: blue; /* Laranja vibrante */
+  background-color: blue;
   color: #fff;
   font-weight: bold;
   border: none;
@@ -117,12 +110,6 @@ header {
   transform: scale(1.05);
 }
 
-.header-actions .login-button:hover {
-  background-color: blue;
-  transform: scale(1.05);
-}
-
-/* Produtos */
 .produtos-container {
   display: flex;
   flex-direction: column;
@@ -219,14 +206,12 @@ header {
   transform: scale(1.05);
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .produto-item, .usuario-item {
     width: calc(50% - 1rem);
   }
 }
 
-/* Animação de logo */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

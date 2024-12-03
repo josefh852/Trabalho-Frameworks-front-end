@@ -56,7 +56,7 @@ function App() {
 
       {/* Listagem de Produtos */}
       <div className="produtos-container">
-        <h1 className="titulo-produto">Produtos</h1>
+        <h1 className="titulo-produto">Carrinhos</h1>
         <div className="produtos-list">
           {produtos.map(produto => (
             <div key={produto.id} className="produto-item">
