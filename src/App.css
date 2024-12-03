@@ -49,13 +49,11 @@
 
 
 .navigation a:hover {
-  color: blue;
 }
 
 
 .header-actions .login-button {
   padding: 0.8rem;
-  background-color: blue;
   color: #fff;
   font-weight: bold;
   border: none;
@@ -67,7 +65,6 @@
 
 
 .header-actions .login-button:hover {
-  background-color: blue;
 }
 
 
@@ -140,7 +137,6 @@
 
 .titulo-produto {
   font-size: 60px;
-  color: blue;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -182,7 +178,6 @@
 .produto-nome {
   font-size: 1.2em;
   margin: 0.5rem 0;
-  color: blue;
 }
 
 
@@ -205,7 +200,6 @@
   margin-top: auto;
   width: 100%;
   padding: 0.8rem;
-  background-color: blue;
   color: #fff;
   font-weight: bold;
   border: none;
@@ -217,7 +211,6 @@
 
 
 .botao-comprar:hover {
-  background-color: blue;
 }
 
 
@@ -229,7 +222,6 @@
 
 .titulo-usuario {
   font-size: 60px;
-  color: blue;
   margin-bottom: 1rem;
   text-align: center;
   margin-bottom: 30px;
@@ -265,7 +257,6 @@
 .usuario-nome {
   font-size: 1.2em;
   margin: 0.5rem 0;
-  color: blue;
 }
 
 
@@ -276,16 +267,10 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .produto-item,
   .usuario-item {
     width: calc(100% - 1rem);}
-
-
-
-
-
 
 .produtos-container{
   display: flex;
