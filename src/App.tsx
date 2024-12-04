@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import logo from './assets/ok.png'
 import './App.css'
 // Tipo para produtos
 type ProdutoType = {
@@ -40,7 +41,7 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <img src="./ok.png" width={150} height={70}></img>
+        <img src={logo} width={150} height={70}></img>
         <nav className="navigation">
           <ul>
             <li><a href="#login">Login</a></li>
