@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import logo from './assets/ok.png'
 // Tipo para produtos
 type ProdutoType = {
   id: number,
@@ -40,7 +41,7 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <img src="/ok.png" width={150} height={70}></img>
+        <img src={logo} alt="React logo"/>
         <nav className="navigation">
           <ul>
             <li><a href="#login">Login</a></li>
