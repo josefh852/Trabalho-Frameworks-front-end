@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import logo from './assets/ok.png'
+import logo from '../../assets/ok.png'
 import './App.css'
 // Tipo para produtos
 type ProdutoType = {
