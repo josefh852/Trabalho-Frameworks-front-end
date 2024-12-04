@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <img src={logo} width={150} height={70}/>
+        <img src={logo} width={150} height={70}></img>
         <nav className="navigation">
           <ul>
             <li><a href="#login">Login</a></li>
