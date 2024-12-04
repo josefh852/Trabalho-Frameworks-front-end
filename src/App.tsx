@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <img src={logo} alt="React logo"/>
+        <img src={logo} width={150} height={70}/>
         <nav className="navigation">
           <ul>
             <li><a href="#login">Login</a></li>
