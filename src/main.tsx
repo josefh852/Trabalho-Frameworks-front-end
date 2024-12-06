@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import CadastroProduto from './componentes/cadastroproduto/CadastroProduto.tsx';
 import CadastroPista from './componentes/cadastropista/CadastroPista.tsx';
-
 import './index.css';
 
 const router = createBrowserRouter([

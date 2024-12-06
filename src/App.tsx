@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import logo from './assets/ok.png'
+
 // Tipo para produtos
 type ProdutoType = {
   id: number,
@@ -20,6 +21,22 @@ type PistaType = {
 
 function App() {
   
+  const [showLogin, setShowLogin] = useState(false); // Controla a exibição do login
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
+
+
+  const handleLoginClick = () => {
+    setShowLogin(!showLogin); // Alterna entre mostrar e esconder o formulário de login
+  };
+
+
+  const handleLoginSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    alert(`Usuário: ${usuario} \nSenha: ${senha}`); // Apenas um exemplo simples de como capturar as informações
+    setShowLogin(false); // Fecha o login após submissão
+  };
+
   const [produtos, setProdutos] = useState<ProdutoType[]>([])
   useEffect(() => {
 
@@ -40,20 +57,49 @@ function App() {
  
   return (
     <>
-      <header className="site-header">
-        <img src={logo} width={150} height={70}></img>
-        <nav className="navigation">
-          <ul>
-            <li><a href="#login">Login</a></li>
-            <li><a href="#veiculos">Veículos </a></li>
-            <li><a href="#monster_trucks">Monster Trucks</a></li>
-            <li><a href="#conjuntos_e_expanções_de_pistas">Conjuntos e Expansões de Pistas</a></li>
-          </ul>
-        </nav>
-        <div className="header-actions">
-          <button className="login-button">Login</button>
+      {showLogin && (
+        <div className="login-form-container">
+          <h2>Login</h2>
+          <form onSubmit={handleLoginSubmit}>
+            <div>
+              <label htmlFor="usuario">Usuário</label>
+              <input
+                type="text"
+                id="usuario"
+                value={usuario}
+                onChange={(e) => setUsuario(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="senha">Senha</label>
+              <input
+                type="password"
+                id="senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit">Entrar</button>
+          </form>
         </div>
-      </header>
+      )}
+
+<header className="site-header">
+  <img src={logo} width={150} height={70} alt="Logo" />
+  <nav className="navigation">
+    <ul>
+      <li><a href="#login">Login</a></li>
+      <li><a href="#veiculos">Veículos</a></li>
+      <li><a href="#monster_trucks">Monster Trucks</a></li>
+      <li><a href="#conjuntos_e_expansoes_de_pistas">Conjuntos e Expansões de Pistas</a></li>
+    </ul>
+  </nav>
+  <div className="header-actions">
+    <button className="login-button" onClick={handleLoginClick}>Login</button>
+  </div>
+</header>
 
       {/* Listagem de Produtos */}
       <div className="produtos-container">
