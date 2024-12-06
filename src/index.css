@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  margin: 0; 
+  margin: 0;
   padding: 0;  
 }
 
@@ -23,7 +23,7 @@ h1 {
   margin: 0;
   font-size: 36px;
   color: blue;
-  margin: 0; 
+  margin: 0;
   font-size: 36px;
 }
 
@@ -60,14 +60,14 @@ button:focus, button:focus-visible {
 }
 
 header {
-  text-align: center; 
-  padding: 20px; 
-  background-color: #f4f4f4; 
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 .site-header .logo:hover {
   transform: rotate(360deg) scale(1.1);
-  filter: drop-shadow(0 0 10px #ffd700); 
+  filter: drop-shadow(0 0 10px #ffd700);
 }
 
 .navigation ul {
