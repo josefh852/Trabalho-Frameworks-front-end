@@ -319,3 +319,58 @@
     width: calc(100% - 1rem);
   }
 }
+
+.barra-pesquisa-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Garante que ambos fiquem alinhados verticalmente */
+  margin: 50px 0;
+}
+
+/* Container centralizado */
+.barra-pesquisa-container {
+  display: flex; /* Flexbox ajuda a alinhar os itens horizontalmente */
+  justify-content: center; /* Alinha os itens horizontalmente no centro */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  margin: 0px; /* Espaçamento superior e inferior */
+}
+
+/* Campo de entrada */
+.campo-pesquisa {
+  width: 80%; /* Ou defina o tamanho desejado */
+  max-width: 500px; /* Tamanho máximo */
+  padding: 12px 15px;
+  border: 2px solid #ccc;
+  border-right: none; /* Remove a borda entre o input e o botão */
+  border-radius: 25px 0 0 25px; /* Arredondado apenas no lado esquerdo */
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  box-sizing: border-box; /* Inclui padding no tamanho total */
+  height: 10px; /* Define uma altura consistente */
+  vertical-align:text-top;
+}
+
+/* Botão de busca */
+.botao-pesquisa {
+  padding: 12px 15px; /* Apenas largura interna no botão */
+  background-color: white;
+  color: #333;
+  border: 2px solid #ccc;
+  border-left: none; /* Remove a borda entre o botão e o input */
+  border-radius: 0 25px 25px 0; /* Arredondado apenas no lado direito */
+  cursor: pointer;
+  font-size: 16px;
+  height: 10px; /* Altura igual à do campo de pesquisa */
+  display: flex;
+  align-items: center; /* Alinha o conteúdo verticalmente */
+  justify-content: center; /* Alinha o conteúdo horizontalmente */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito de hover no botão */
+.botao-pesquisa:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}

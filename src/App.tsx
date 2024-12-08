@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import logo from './assets/ok.png'
 
-// Tipo para produtos
 type ProdutoType = {
   id: number,
   nome: string,
@@ -48,12 +47,10 @@ function App() {
   const [pistas, setPistas] = useState<PistaType[]>([])
   useEffect(() => {
 
-    fetch("https://trabalho-frameworks.onrender.com/pistas")
+    fetch("https://trabalho-frameworks.onrender.com/pista")
       .then(resposta => resposta.json())
       .then(dados => setPistas(dados))
   }, [])
-
-
  
   return (
     <>
@@ -90,9 +87,12 @@ function App() {
   <img src={logo} width={150} height={70} alt="Logo" />
   <nav className="navigation">
     <ul>
-      <li><a href="#login">Login</a></li>
       <li><a href="#veiculos">Veículos</a></li>
       <li><a href="#monster_trucks">Monster Trucks</a></li>
+      <div className="barra-pesquisa-container">
+    <input type="text" className="campo-pesquisa" placeholder="Digite sua pesquisa aqui" />
+    <button className="botao-pesquisa">🔍</button>
+</div>
       <li><a href="#conjuntos_e_expansoes_de_pistas">Conjuntos e Expansões de Pistas</a></li>
     </ul>
   </nav>
@@ -122,7 +122,7 @@ function App() {
       <div className="produtos-container">
   <h1 className="titulo-produto">Pistas</h1>
   <div className="produtos-list">
-    {pistas.map((pista) => (
+    {pistas.map(pista => (
       <div key={pista.id} className="produto-item">
         <h3 className="produto-nome">{pista.nome}</h3>
         <div className="container-imagem">
