@@ -24,11 +24,9 @@ function App() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
 
-
   const handleLoginClick = () => {
     setShowLogin(!showLogin); // Alterna entre mostrar e esconder o formulário de login
   };
-
 
   const handleLoginSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,20 +36,18 @@ function App() {
 
   const [produtos, setProdutos] = useState<ProdutoType[]>([])
   useEffect(() => {
-
     fetch("https://trabalho-frameworks.onrender.com/produtos")
       .then(resposta => resposta.json())
       .then(dados => setProdutos(dados))
-  }, [])
+  }, []);
 
   const [pistas, setPistas] = useState<PistaType[]>([])
   useEffect(() => {
-
-    fetch("https://trabalho-frameworks.onrender.com/pista")
+    fetch("https://trabalho-frameworks.onrender.com/pistas")
       .then(resposta => resposta.json())
       .then(dados => setPistas(dados))
-  }, [])
- 
+  }, []);
+
   return (
     <>
       {showLogin && (
@@ -101,7 +97,6 @@ function App() {
   </div>
 </header>
 
-      {/* Listagem de Produtos */}
       <div className="produtos-container">
         <h1 className="titulo-produto">Carrinhos</h1>
         <div className="produtos-list">
@@ -117,21 +112,21 @@ function App() {
             </div>
           ))}
         </div>
-      </div>
+      </div>;
 
       <div className="produtos-container">
-  <h1 className="titulo-produto">Pistas</h1>
-  <div className="produtos-list">
-    {pistas.map(pista => (
-      <div key={pista.id} className="produto-item">
-        <h3 className="produto-nome">{pista.nome}</h3>
-        <div className="container-imagem">
-          <img src={pista.imagem} alt="Imagem da pista" />
-        </div>
-        <p className="produto-preco">{pista.preco}</p>
-        <p className="produto-descricao">{pista.descricao}</p>
-        <button className="botao-comprar">Comprar</button>
-      </div>
+        <h1 className="titulo-produto">Pistas</h1>
+        <div className="produtos-list">
+          {pistas.map(pista => (
+            <div key={pista.id} className="produto-item">
+              <h3 className="produto-nome">{pista.nome}</h3>
+              <div className="container-imagem">
+                <img src={pista.imagem} alt="Imagem do produto" />
+              </div>
+              <p className="produto-preco">{pista.preco}</p>
+              <p className="produto-descricao">{pista.descricao}</p>
+              <button className="botao-comprar">Comprar</button>
+            </div>
     ))}
   </div>
 </div>
