@@ -112,7 +112,7 @@ function App() {
             </div>
           ))}
         </div>
-      </div>;
+      </div>
 
       <div className="produtos-container">
         <h1 className="titulo-produto">Pistas</h1>
