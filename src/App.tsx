@@ -31,6 +31,7 @@ function App() {
   const [pistas, setPistas] = useState<PistaType[]>([]);
   const [activeImage, setActiveImage] = useState<{ [key: number]: number }>({});
   const [isHovered, setIsHovered] = useState<{ [key: number]: boolean }>({});
+  const [searchText, setSearchText] = useState('');
 
   const handleLoginClick = () => {
     setShowLogin(!showLogin);
@@ -45,7 +46,7 @@ function App() {
   const handleImageChange = (produtoId: number, index: number) => {
     setActiveImage((prevState) => ({
       ...prevState,
-      [produtoId]: index, // Atualiza o índice da imagem ativa para esse produto
+      [produtoId]: index,
     }));
   };
 
@@ -74,6 +75,14 @@ function App() {
       .then((resposta) => resposta.json())
       .then((dados) => setPistas(dados));
   }, []);
+
+  const filteredProdutos = produtos.filter((produto) =>
+    produto.nome.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const filteredPistas = pistas.filter((pista) =>
+    pista.nome.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <>
@@ -125,6 +134,8 @@ function App() {
                 type="text"
                 className="campo-pesquisa"
                 placeholder="Digite sua pesquisa aqui"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
               />
               <button className="botao-pesquisa">🔍</button>
             </div>
@@ -132,7 +143,9 @@ function App() {
               <Link to="/cadastro-pista">Pistas</Link>
             </li>
             <li>
-              <a href="#conjuntos_e_expansoes_de_pistas">Conjuntos e Expansões</a>
+              <a href="#conjuntos_e_expansoes_de_pistas">
+                Conjuntos e Expansões
+              </a>
             </li>
           </ul>
         </nav>
@@ -146,7 +159,7 @@ function App() {
       <div className="produtos-container">
         <h1 className="titulo-produto">Carrinhos</h1>
         <div className="produtos-list">
-          {produtos.map((produto) => (
+          {filteredProdutos.map((produto) => (
             <div
               key={produto.id}
               className="produto-item"
@@ -156,7 +169,6 @@ function App() {
               <h3 className="produto-nome">{produto.nome}</h3>
               <div className="container-imagem">
                 <div className="image-container">
-                  {/* Exibindo a primeira imagem normalmente */}
                   <img
                     src={produto.imagem}
                     alt="Imagem do produto"
@@ -166,7 +178,6 @@ function App() {
                       display: activeImage[produto.id] === 0 ? 'block' : 'none',
                     }}
                   />
-                  {/* Exibindo a imagem secundária com base no estado */}
                   {activeImage[produto.id] === 1 && (
                     <img
                       src={produto.imagemSecundaria}
@@ -180,51 +191,48 @@ function App() {
                       }}
                     />
                   )}
-                  {/* Botão de flecha para passar para a imagem secundária */}
                   {isHovered[produto.id] && (
-                    <button
-                      className="next-image-button"
-                      onClick={() => handleImageChange(produto.id, 1)} // Passa para a imagem secundária
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        right: '10px',
-                        transform: 'translateY(-50%)',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <div className="arrow-button">➡️</div>
-                    </button>
-                  )}
-                  {/* Botão de flecha para voltar à imagem inicial */}
-                  {isHovered[produto.id] && (
-                    <button
-                      className="previous-image-button"
-                      onClick={() => handleImageChange(produto.id, 0)} // Volta para a imagem inicial
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '10px',
-                        transform: 'translateY(-50%)',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <div className="arrow-button">⬅️</div>
-                    </button>
+                    <>
+                      <button
+                        className="next-image-button"
+                        onClick={() => handleImageChange(produto.id, 1)}
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          right: '10px',
+                          transform: 'translateY(-50%)',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <div className="arrow-button">➡️</div>
+                      </button>
+                      <button
+                        className="previous-image-button"
+                        onClick={() => handleImageChange(produto.id, 0)}
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '10px',
+                          transform: 'translateY(-50%)',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <div className="arrow-button">⬅️</div>
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
-              <p className="produto-descricao"> {produto.descricao} <p></p> (Disponiveis: {produto.estoque} unidades)
+              <p className="produto-descricao">
+                {produto.descricao} <br /> (Disponíveis: {produto.estoque}{' '}
+                unidades)
               </p>
               <p className="produto-preco">{produto.preco}</p>
-              <button
-                className="botao-comprar"
-                disabled={produto.estoque <= 0}
-              >
+              <button className="botao-comprar" disabled={produto.estoque <= 0}>
                 {produto.estoque > 0 ? 'Comprar' : 'Indisponível'}
               </button>
             </div>
@@ -235,7 +243,7 @@ function App() {
       <div className="produtos-container">
         <h1 className="titulo-produto">Pistas</h1>
         <div className="produtos-list">
-          {pistas.map((pista) => (
+          {filteredPistas.map((pista) => (
             <div
               key={pista.id}
               className="produto-item"
@@ -245,7 +253,6 @@ function App() {
               <h3 className="produto-nome">{pista.nome}</h3>
               <div className="container-imagem">
                 <div className="image-container">
-                  {/* Exibindo a primeira imagem normalmente */}
                   <img
                     src={pista.imagem}
                     alt="Imagem da pista"
@@ -255,7 +262,6 @@ function App() {
                       display: activeImage[pista.id] === 0 ? 'block' : 'none',
                     }}
                   />
-                  {/* Exibindo a imagem secundária com base no estado */}
                   {activeImage[pista.id] === 1 && (
                     <img
                       src={pista.imagemSecundaria}
@@ -269,51 +275,48 @@ function App() {
                       }}
                     />
                   )}
-                  {/* Botão de flecha para passar para a imagem secundária */}
                   {isHovered[pista.id] && (
-                    <button
-                      className="next-image-button"
-                      onClick={() => handleImageChange(pista.id, 1)} // Passa para a imagem secundária
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        right: '10px',
-                        transform: 'translateY(-50%)',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <div className="arrow-button">➡️</div>
-                    </button>
-                  )}
-                  {/* Botão de flecha para voltar à imagem inicial */}
-                  {isHovered[pista.id] && (
-                    <button
-                      className="previous-image-button"
-                      onClick={() => handleImageChange(pista.id, 0)} // Volta para a imagem inicial
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '10px',
-                        transform: 'translateY(-50%)',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <div className="arrow-button">⬅️</div>
-                    </button>
+                    <>
+                      <button
+                        className="next-image-button"
+                        onClick={() => handleImageChange(pista.id, 1)}
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          right: '10px',
+                          transform: 'translateY(-50%)',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <div className="arrow-button">➡️</div>
+                      </button>
+                      <button
+                        className="previous-image-button"
+                        onClick={() => handleImageChange(pista.id, 0)}
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '10px',
+                          transform: 'translateY(-50%)',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <div className="arrow-button">⬅️</div>
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
-              <p className="produto-descricao"> {pista.descricao} <p></p> (Disponiveis: {pista.estoque} unidades)
+              <p className="produto-descricao">
+                {pista.descricao} <br /> (Disponíveis: {pista.estoque}{' '}
+                unidades)
               </p>
               <p className="produto-preco">{pista.preco}</p>
-              <button
-                className="botao-comprar"
-                disabled={pista.estoque <= 0}
-              >
+              <button className="botao-comprar" disabled={pista.estoque <= 0}>
                 {pista.estoque > 0 ? 'Comprar' : 'Indisponível'}
               </button>
             </div>
