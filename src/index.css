@@ -172,6 +172,7 @@ header {
   color: #333;
   font-family: 'Arial', sans-serif;
   font-weight: bold;
+  text-align: center;
 }
 
 .produto-preco {
@@ -180,13 +181,17 @@ header {
   color: red;
   margin: 0.5rem 0;
   text-align: center;
-  margin-top: auto;
+  margin-top:0%;
 }
 
 .produto-descricao {
   font-size: 0.9rem;
   color: #777;
-  margin-bottom: 1rem;
+}
+
+.produto-estoque {
+  font-size: 0.9em;
+  color: #555;
 }
 
 .botao-comprar {
@@ -229,8 +234,3 @@ header {
   }
 }
 
-.produto-estoque {
-  font-size: 0.9em;
-  color: #555;
-  margin: 0.5rem 0;
-}

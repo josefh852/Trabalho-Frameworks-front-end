@@ -88,8 +88,6 @@ function App() {
     <ul>
       <li><a href="#veiculos">Veículos</a></li>
       <li><a href="#monster_trucks">Monster Trucks</a></li>
-      <li><Link to="/cadastro-produto">produtos</Link>
-            </li>
             <li><Link to="/cadastro-pista">pistas</Link>
             </li>
       <div className="barra-pesquisa-container">
@@ -113,8 +111,7 @@ function App() {
               <div className="container-imagem">
                 <img src={produto.imagem} alt="Imagem do produto" />
               </div>
-              <p className="produto-descricao">{produto.descricao}</p>
-              <p className="produto-estoque">Estoque: {produto.estoque}</p>
+              <p className="produto-descricao">{produto.descricao} <p></p> (Disponiveis: {produto.estoque} unidades)</p>
               <p className="produto-preco">{produto.preco}</p>
       <button
         className="botao-comprar"
@@ -136,14 +133,13 @@ function App() {
               <div className="container-imagem">
                 <img src={pista.imagem} alt="Imagem do produto" />
               </div>
-              <p className="produto-descricao">{pista.descricao}</p>
-              <p className="produto-estoque">Estoque: {pista.estoque}</p>
+              <p className="produto-descricao">{pista.descricao} <p></p> (Disponiveis: {pista.estoque} unidades)</p>
               <p className="produto-preco">{pista.preco}</p>
       <button
         className="botao-comprar"
         disabled={pista.estoque <= 0} // Desativa o botão se o estoque for zero
       >
-        {pista.estoque > 0 ? "Comprar" : "Indisponível"} {/* Texto dinâmico */}
+        {pista.estoque > 0 ? "Comprar" : "Indisponível"}
       </button>
     </div>
     ))}
