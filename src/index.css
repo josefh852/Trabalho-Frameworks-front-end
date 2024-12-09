@@ -121,9 +121,9 @@ header {
 
 .produtos-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsividade */
-  gap: 7rem; /* Espaçamento entre os itens */
-  max-width: 1200px; /* Largura máxima */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsividade */
+  gap: 2rem; /* Espaçamento entre os itens */
+  max-width: 1800px; /* Largura máxima */
   padding: 2rem;
 }
 
