@@ -29,7 +29,8 @@ function App() {
   const [senha, setSenha] = useState('');
   const [produtos, setProdutos] = useState<ProdutoType[]>([]);
   const [pistas, setPistas] = useState<PistaType[]>([]);
-  const [activeImage, setActiveImage] = useState<{ [key: number]: number }>({});
+  const [activeProdutoImage, setActiveProdutoImage] = useState<{ [key: number]: number }>({});
+  const [activePistaImage, setActivePistaImage] = useState<{ [key: number]: number }>({});
   const [isHovered, setIsHovered] = useState<{ [key: number]: boolean }>({});
   const [searchText, setSearchText] = useState('');
 
@@ -43,10 +44,17 @@ function App() {
     setShowLogin(false);
   };
 
-  const handleImageChange = (produtoId: number, index: number) => {
-    setActiveImage((prevState) => ({
+  const handleProdutoImageChange = (produtoId: number, index: number) => {
+    setActiveProdutoImage((prevState) => ({
       ...prevState,
       [produtoId]: index,
+    }));
+  };
+
+  const handlePistaImageChange = (pistaId: number, index: number) => {
+    setActivePistaImage((prevState) => ({
+      ...prevState,
+      [pistaId]: index,
     }));
   };
 
@@ -67,15 +75,17 @@ function App() {
   useEffect(() => {
     fetch('https://trabalho-frameworks.onrender.com/produtos')
       .then((resposta) => resposta.json())
-      .then((dados) => setProdutos(dados));
+      .then((dados) => setProdutos(dados))
+      .catch((erro) => console.error('Erro ao carregar produtos:', erro));
   }, []);
 
   useEffect(() => {
     fetch('https://trabalho-frameworks.onrender.com/pistas')
       .then((resposta) => resposta.json())
-      .then((dados) => setPistas(dados));
+      .then((dados) => setPistas(dados))
+      .catch((erro) => console.error('Erro ao carregar pistas:', erro));
   }, []);
-
+  
   const filteredProdutos = produtos.filter((produto) =>
     produto.nome.toLowerCase().includes(searchText.toLowerCase())
   );
@@ -175,16 +185,15 @@ function App() {
                     style={{
                       width: '100%',
                       height: 'auto',
-                      display: activeImage[produto.id] === 0 ? 'block' : 'none',
                     }}
                   />
-                  {activeImage[produto.id] === 1 && (
+                  {activeProdutoImage[produto.id] === 1 && (
                     <img
                       src={produto.imagemSecundaria}
                       alt="Imagem secundária do produto"
                       style={{
                         width: '100%',
-                        height: 'auto',
+                        height: '100%',
                         position: 'absolute',
                         top: '0',
                         left: '0',
@@ -195,7 +204,7 @@ function App() {
                     <>
                       <button
                         className="next-image-button"
-                        onClick={() => handleImageChange(produto.id, 1)}
+                        onClick={() => handleProdutoImageChange(produto.id, 1)}
                         style={{
                           position: 'absolute',
                           top: '50%',
@@ -210,7 +219,7 @@ function App() {
                       </button>
                       <button
                         className="previous-image-button"
-                        onClick={() => handleImageChange(produto.id, 0)}
+                        onClick={() => handleProdutoImageChange(produto.id, 0)}
                         style={{
                           position: 'absolute',
                           top: '50%',
@@ -228,8 +237,7 @@ function App() {
                 </div>
               </div>
               <p className="produto-descricao">
-                {produto.descricao} <br /> (Disponíveis: {produto.estoque}{' '}
-                unidades)
+                {produto.descricao} <br /> (Disponíveis: {produto.estoque} unidades)
               </p>
               <p className="produto-preco">{produto.preco}</p>
               <button className="botao-comprar" disabled={produto.estoque <= 0}>
@@ -258,17 +266,16 @@ function App() {
                     alt="Imagem da pista"
                     style={{
                       width: '100%',
-                      height: 'auto',
-                      display: activeImage[pista.id] === 0 ? 'block' : 'none',
+                      height: '100%',
                     }}
                   />
-                  {activeImage[pista.id] === 1 && (
+                  {activePistaImage[pista.id] === 1 && (
                     <img
                       src={pista.imagemSecundaria}
                       alt="Imagem secundária da pista"
                       style={{
                         width: '100%',
-                        height: 'auto',
+                        height: '100%',
                         position: 'absolute',
                         top: '0',
                         left: '0',
@@ -279,7 +286,7 @@ function App() {
                     <>
                       <button
                         className="next-image-button"
-                        onClick={() => handleImageChange(pista.id, 1)}
+                        onClick={() => handlePistaImageChange(pista.id, 1)}
                         style={{
                           position: 'absolute',
                           top: '50%',
@@ -294,7 +301,7 @@ function App() {
                       </button>
                       <button
                         className="previous-image-button"
-                        onClick={() => handleImageChange(pista.id, 0)}
+                        onClick={() => handlePistaImageChange(pista.id, 0)}
                         style={{
                           position: 'absolute',
                           top: '50%',
@@ -312,8 +319,7 @@ function App() {
                 </div>
               </div>
               <p className="produto-descricao">
-                {pista.descricao} <br /> (Disponíveis: {pista.estoque}{' '}
-                unidades)
+                {pista.descricao} <br /> (Disponíveis: {pista.estoque} unidades)
               </p>
               <p className="produto-preco">{pista.preco}</p>
               <button className="botao-comprar" disabled={pista.estoque <= 0}>
