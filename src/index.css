@@ -234,3 +234,38 @@ header {
   }
 }
 
+.container-imagem {
+  position: relative;
+  display: inline-block;
+}
+
+.botao-flecha {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Ajuste conforme necessário */
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  background-color: #007bff; /* Cor azul */
+  color: white;
+  font-size: 18px; /* Tamanho menor da flecha */
+  border: none;
+  padding: 8px; /* Tamanho da bolinha menor */
+  cursor: pointer;
+  border-radius: 50%; /* Faz o botão ficar redondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Inicialmente invisível */
+  transition: opacity 0.3s ease; /* Transição suave ao aparecer/desaparecer */
+}
+
+.container-imagem:hover .botao-flecha {
+  opacity: 1; /* Torna o botão visível quando o mouse passa sobre a imagem */
+}
+
+.botao-flecha:hover {
+  background-color: #0056b3; /* Cor azul mais escura ao passar o mouse */
+}
+
+.botao-flecha:focus {
+  outline: none; /* Remove o contorno ao clicar */
+}
