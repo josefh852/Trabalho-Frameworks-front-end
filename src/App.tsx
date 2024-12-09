@@ -8,7 +8,7 @@ type ProdutoType = {
   nome: string,
   preco: string,
   descricao: string,
-  imagens: string[],
+  imagem: string,
   estoque: number,
 }
 
@@ -17,7 +17,7 @@ type PistaType = {
   nome: string,
   preco: string,
   descricao: string,
-  imagens: string[],
+  imagem: string,
   estoque: number,
 }
 
@@ -109,7 +109,7 @@ function App() {
             <div key={produto.id} className="produto-item">
               <h3 className="produto-nome">{produto.nome}</h3>
               <div className="container-imagem">
-                <img src={produto.imagens} alt="Imagem do produto" />
+                <img src={produto.imagem} alt="Imagem do produto" />
               </div>
               <p className="produto-descricao">{produto.descricao} <p></p> (Disponiveis: {produto.estoque} unidades)</p>
               <p className="produto-preco">{produto.preco}</p>
@@ -131,7 +131,7 @@ function App() {
             <div key={pista.id} className="produto-item">
               <h3 className="produto-nome">{pista.nome}</h3>
               <div className="container-imagem">
-                <img src={pista.imagens} alt="Imagem do produto" />
+                <img src={pista.imagem} alt="Imagem do produto" />
               </div>
               <p className="produto-descricao">{pista.descricao} <p></p> (Disponiveis: {pista.estoque} unidades)</p>
               <p className="produto-preco">{pista.preco}</p>
