@@ -121,11 +121,10 @@ header {
 
 .produtos-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsividade */
-  gap: 4.5rem; /* Espaçamento entre os itens */
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsividade */
+  gap: 7rem; /* Espaçamento entre os itens */
   max-width: 1200px; /* Largura máxima */
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .titulo-produto {
