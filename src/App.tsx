@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import  {Link}  from "react-router-dom";
 import logo from './assets/ok.png'
 
 type ProdutoType = {
@@ -7,7 +8,8 @@ type ProdutoType = {
   nome: string,
   preco: string,
   descricao: string,
-  imagem: string
+  imagem: string,
+  estoque: number,
 }
 
 type PistaType = {
@@ -15,7 +17,8 @@ type PistaType = {
   nome: string,
   preco: string,
   descricao: string,
-  imagem: string
+  imagem: string,
+  estoque: number,
 }
 
 function App() {
@@ -85,6 +88,10 @@ function App() {
     <ul>
       <li><a href="#veiculos">Veículos</a></li>
       <li><a href="#monster_trucks">Monster Trucks</a></li>
+      <li><Link to="/cadastro-produto">produtos</Link>
+            </li>
+            <li><Link to="/cadastro-pista">pistas</Link>
+            </li>
       <div className="barra-pesquisa-container">
     <input type="text" className="campo-pesquisa" placeholder="Digite sua pesquisa aqui" />
     <button className="botao-pesquisa">🔍</button>
@@ -106,10 +113,16 @@ function App() {
               <div className="container-imagem">
                 <img src={produto.imagem} alt="Imagem do produto" />
               </div>
-              <p className="produto-preco">{produto.preco}</p>
               <p className="produto-descricao">{produto.descricao}</p>
-              <button className="botao-comprar">Comprar</button>
-            </div>
+              <p className="produto-estoque">Estoque: {produto.estoque}</p>
+              <p className="produto-preco">{produto.preco}</p>
+      <button
+        className="botao-comprar"
+        disabled={produto.estoque <= 0} // Desativa o botão se o estoque for zero
+      >
+        {produto.estoque > 0 ? "Comprar" : "Indisponível"} {/* Texto dinâmico */}
+      </button>
+    </div>
           ))}
         </div>
       </div>
@@ -123,10 +136,16 @@ function App() {
               <div className="container-imagem">
                 <img src={pista.imagem} alt="Imagem do produto" />
               </div>
-              <p className="produto-preco">{pista.preco}</p>
               <p className="produto-descricao">{pista.descricao}</p>
-              <button className="botao-comprar">Comprar</button>
-            </div>
+              <p className="produto-estoque">Estoque: {pista.estoque}</p>
+              <p className="produto-preco">{pista.preco}</p>
+      <button
+        className="botao-comprar"
+        disabled={pista.estoque <= 0} // Desativa o botão se o estoque for zero
+      >
+        {pista.estoque > 0 ? "Comprar" : "Indisponível"} {/* Texto dinâmico */}
+      </button>
+    </div>
     ))}
   </div>
 </div>

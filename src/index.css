@@ -62,7 +62,7 @@ button:focus, button:focus-visible {
 header {
   text-align: center;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: red;
 }
 
 .site-header .logo:hover {
@@ -152,7 +152,7 @@ header {
   height: 250px;
   overflow: hidden;
   border-radius: 8px;
-  position: relative;
+  position: top;
   background-color: #eee;
 }
 
@@ -179,6 +179,8 @@ header {
   font-weight: bold;
   color: red;
   margin: 0.5rem 0;
+  text-align: center;
+  margin-top: auto;
 }
 
 .produto-descricao {
@@ -227,3 +229,8 @@ header {
   }
 }
 
+.produto-estoque {
+  font-size: 0.9em;
+  color: #555;
+  margin: 0.5rem 0;
+}

@@ -49,7 +49,7 @@
 .header-actions .login-button {
   padding: 0.8rem;
   background-color: red;
-  color: #fff;
+  color: red;
   font-weight: bold;
   border: none;
   border-radius: 4px;
@@ -374,3 +374,4 @@
   background-color: #f0f0f0;
   color: #007bff;
 }
+
