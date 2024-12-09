@@ -8,7 +8,7 @@ type ProdutoType = {
   nome: string,
   preco: string,
   descricao: string,
-  imagem: string,
+  imagens: string[],
   estoque: number,
 }
 
@@ -17,7 +17,7 @@ type PistaType = {
   nome: string,
   preco: string,
   descricao: string,
-  imagem: string,
+  imagens: string[],
   estoque: number,
 }
 
@@ -54,33 +54,35 @@ function App() {
   return (
     <>
       {showLogin && (
-        <div className="login-form-container">
-          <h2>Login</h2>
-          <form onSubmit={handleLoginSubmit}>
-            <div>
-              <label htmlFor="usuario">Usuário</label>
-              <input
-                type="text"
-                id="usuario"
-                value={usuario}
-                onChange={(e) => setUsuario(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="senha">Senha</label>
-              <input
-                type="password"
-                id="senha"
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Entrar</button>
-          </form>
+  <div className="login-form-container">
+    <div className="login-form-content">
+      <h2 className="login-title">Login</h2>
+      <form onSubmit={handleLoginSubmit}>
+        <div className="form-group">
+          <label htmlFor="usuario">Usuário</label>
+          <input
+            type="text"
+            id="usuario"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+            required
+          />
         </div>
-      )}
+        <div className="form-group">
+          <label htmlFor="senha">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="submit-button">Entrar</button>
+      </form>
+    </div>
+  </div>
+)}
 
 <header className="site-header">
   <img src={logo} width={150} height={70} alt="Logo" />
@@ -107,7 +109,7 @@ function App() {
             <div key={produto.id} className="produto-item">
               <h3 className="produto-nome">{produto.nome}</h3>
               <div className="container-imagem">
-                <img src={produto.imagem} alt="Imagem do produto" />
+                <img src={produto.imagens} alt="Imagem do produto" />
               </div>
               <p className="produto-descricao">{produto.descricao} <p></p> (Disponiveis: {produto.estoque} unidades)</p>
               <p className="produto-preco">{produto.preco}</p>
@@ -129,7 +131,7 @@ function App() {
             <div key={pista.id} className="produto-item">
               <h3 className="produto-nome">{pista.nome}</h3>
               <div className="container-imagem">
-                <img src={pista.imagem} alt="Imagem do produto" />
+                <img src={pista.imagens} alt="Imagem do produto" />
               </div>
               <p className="produto-descricao">{pista.descricao} <p></p> (Disponiveis: {pista.estoque} unidades)</p>
               <p className="produto-preco">{pista.preco}</p>
