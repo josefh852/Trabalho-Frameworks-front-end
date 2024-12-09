@@ -88,13 +88,11 @@ function App() {
     <ul>
       <li><a href="#veiculos">Veículos</a></li>
       <li><a href="#monster_trucks">Monster Trucks</a></li>
-            <li><Link to="/cadastro-pista">pistas</Link>
-            </li>
       <div className="barra-pesquisa-container">
     <input type="text" className="campo-pesquisa" placeholder="Digite sua pesquisa aqui" />
-    <button className="botao-pesquisa">🔍</button>
-</div>
-      <li><a href="#conjuntos_e_expansoes_de_pistas">Conjuntos e Expansões de Pistas</a></li>
+    <button className="botao-pesquisa">🔍</button></div>
+      <li><Link to="/cadastro-pista">pistas</Link></li>
+      <li><a href="#conjuntos_e_expansoes_de_pistas">Conjuntos e Expansões</a></li>
     </ul>
   </nav>
   <div className="header-actions">
