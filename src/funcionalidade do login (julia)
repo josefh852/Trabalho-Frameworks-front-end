@@ -40,12 +40,7 @@ function App() {
 
   const handleLoginSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // A alteração aqui foi apenas na mensagem do login
-    if (usuario && senha) {
-      alert(`Login realizado com sucesso! Bem-vindo, ${usuario}`);
-    } else {
-      alert("Por favor, preencha os campos de usuário e senha.");
-    }
+    alert(`Usuário: ${usuario} \nSenha: ${senha}`);
     setShowLogin(false);
   };
 
@@ -339,3 +334,4 @@ function App() {
 }
 
 export default App;
+
