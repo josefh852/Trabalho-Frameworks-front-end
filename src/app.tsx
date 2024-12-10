@@ -33,6 +33,7 @@ function App() {
   const [activePistaImage, setActivePistaImage] = useState<{ [key: number]: number }>({});
   const [isHovered, setIsHovered] = useState<{ [key: number]: boolean }>({});
   const [searchText, setSearchText] = useState('');
+  const [showSenha, setShowSenha] = useState(false); // Adiciona o estado para mostrar/esconder a senha
 
   const handleLoginClick = () => {
     setShowLogin(!showLogin);
@@ -118,13 +119,23 @@ function App() {
               </div>
               <div className="form-group">
                 <label htmlFor="senha">Senha</label>
-                <input
-                  type="password"
-                  id="senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                />
+                <div className="senha-container">
+                  <input
+                    type={showSenha ? 'text' : 'password'} // Controla a visibilidade da senha
+                    id="senha"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="eye-button"
+                    onClick={() => setShowSenha(!showSenha)} // Alterna a visibilidade da senha
+                    style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                  >
+                    {showSenha ? '🙈' : '👁️'}
+                  </button>
+                </div>
               </div>
               <button type="submit" className="submit-button">
                 Entrar
@@ -339,4 +350,3 @@ function App() {
 }
 
 export default App;
-
