@@ -1,6 +1,5 @@
 import {  ChangeEvent, FormEvent, useState } from "react"
-import { useNavigate } from "react-router-dom"
-
+import { useNavigate } from 'react-router-dom';
 function CadastroProduto(){
     const navigate = useNavigate()
     const [id,setId] = useState("")
@@ -10,29 +9,33 @@ function CadastroProduto(){
     const [imagem,setImagem] = useState("")
     async function handleForm(event:FormEvent){
         event.preventDefault()
-       await fetch("http://localhost:8000/produtos",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                id:id,
-                nome:nome,
-                descricao:descricao,
-                preco:preco,
-                imagem:imagem
+        try{
+            const resposta = await fetch("https://one022a-marketplace-e90o.onrender.com/produtos",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    id:id,
+                    nome:nome,
+                    descricao:descricao,
+                    preco:preco,
+                    imagem:imagem
+                })
             })
-        }).then(async(resposta)=>{
             if(resposta.status!=500){
-            alert("Produto cadastrado com sucesso")
-            navigate("/")
-            }else{
-                alert("Erro ao cadastar produto"+resposta.body)
+                alert("Produto Cadastro com Sucesso")
+                navigate("/")
             }
-        })
-        .catch(()=>{
-            console.log("Erro ao cadastrar produtos")
-        })
+            else{
+                const mensagem = await resposta.text()
+                alert("Erro ao Cadastrar Produto - Error: "+mensagem)
+            }
+        }
+        catch(e){
+            alert("Servidor não está respondendo.")
+        }
+        
     }
     function handleId(event:ChangeEvent<HTMLInputElement>){
         setId(event.target.value)
