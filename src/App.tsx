@@ -26,58 +26,7 @@ type PistaType = {
 function App() {
   const [produtos, setProdutos] = useState<ProdutoType[]>([]);
   const [pistas, setPistas] = useState<PistaType[]>([]);
-<<<<<<< HEAD
   const [searchText, setSearchText] = useState("");
-=======
-  const [activeProdutoImage, setActiveProdutoImage] = useState<{ [key: number]: number }>({});
-  const [activePistaImage, setActivePistaImage] = useState<{ [key: number]: number }>({});
-  const [isHovered, setIsHovered] = useState<{ [key: number]: boolean }>({});
-  const [searchText, setSearchText] = useState('');
-  const [showSenha, setShowSenha] = useState(false); // Adiciona o estado para mostrar/esconder a senha
-
-  const handleLoginClick = () => {
-    setShowLogin(!showLogin);
-  };
-
-  const handleLoginSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // A alteração aqui foi apenas na mensagem do login
-    if (usuario && senha) {
-      alert(`Login realizado com sucesso! Bem-vindo, ${usuario}`);
-    } else {
-      alert("Por favor, preencha os campos de usuário e senha.");
-    }
-    setShowLogin(false);
-  };
-
-  const handleProdutoImageChange = (produtoId: number, index: number) => {
-    setActiveProdutoImage((prevState) => ({
-      ...prevState,
-      [produtoId]: index,
-    }));
-  };
-
-  const handlePistaImageChange = (pistaId: number, index: number) => {
-    setActivePistaImage((prevState) => ({
-      ...prevState,
-      [pistaId]: index,
-    }));
-  };
-
-  const handleMouseEnter = (produtoId: number) => {
-    setIsHovered((prevState) => ({
-      ...prevState,
-      [produtoId]: true,
-    }));
-  };
-
-  const handleMouseLeave = (produtoId: number) => {
-    setIsHovered((prevState) => ({
-      ...prevState,
-      [produtoId]: false,
-    }));
-  };
->>>>>>> c5afc0fe652ae3da1c9da8c2560d55b8fa93b1a1
 
   useEffect(() => {
     fetch("https://trabalho-frameworks.onrender.com/produtos")
@@ -155,52 +104,6 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
-=======
-      {showLogin && (
-        <div className="login-form-container">
-          <div className="login-form-content">
-            <h2 className="login-title">Login</h2>
-            <form onSubmit={handleLoginSubmit}>
-              <div className="form-group">
-                <label htmlFor="usuario">Usuário</label>
-                <input
-                  type="text"
-                  id="usuario"
-                  value={usuario}
-                  onChange={(e) => setUsuario(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="senha">Senha</label>
-                <div className="senha-container">
-                  <input
-                    type={showSenha ? 'text' : 'password'} // Controla a visibilidade da senha
-                    id="senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                    required
-                  />
-                  <button
-                    type="button"
-                    className="eye-button"
-                    onClick={() => setShowSenha(!showSenha)} // Alterna a visibilidade da senha
-                    style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
-                  >
-                    {showSenha ? '🙈' : '👁️'}
-                  </button>
-                </div>
-              </div>
-              <button type="submit" className="submit-button">
-                Entrar
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
->>>>>>> c5afc0fe652ae3da1c9da8c2560d55b8fa93b1a1
       <header className="site-header">
         <img src={logo} width={150} height={70} alt="Logo" />
         <nav className="navigation">
@@ -260,7 +163,3 @@ function App() {
 }
 
 export default App;
-<<<<<<< HEAD
-=======
- /**/ 
->>>>>>> c5afc0fe652ae3da1c9da8c2560d55b8fa93b1a1
