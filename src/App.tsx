@@ -13,19 +13,8 @@ type ProdutoType = {
   estoque: number;
 };
 
-type PistaType = {
-  id: number;
-  nome: string;
-  preco: string;
-  descricao: string;
-  imagem: string;
-  imagemSecundaria: string;
-  estoque: number;
-};
-
 function App() {
   const [produtos, setProdutos] = useState<ProdutoType[]>([]);
-  const [pistas, setPistas] = useState<PistaType[]>([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -33,11 +22,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => setProdutos(data))
       .catch((error) => console.error("Erro ao carregar produtos:", error));
-
-    fetch("https://trabalho-frameworks.onrender.com/pistas")
-      .then((res) => res.json())
-      .then((data) => setPistas(data))
-      .catch((error) => console.error("Erro ao carregar pistas:", error));
   }, []);
 
   // Função para editar produto
