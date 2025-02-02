@@ -95,7 +95,7 @@ function App() {
   );
   function handleExcluir(id:number){
     alert(`Excluir o produto com id ${id}`)
-    fetch(`https://one022a-marketplace-e90o.onrender.com/produtos/${id}`, {
+    fetch(`https://trabalho-frameworks.onrender.com/produtos${id}`, {
       method: 'DELETE'
     })
     .then(resposta=>{
