@@ -23,21 +23,6 @@ type PistaType = {
   estoque: number;
 };
 
-function handleExcluir(id:number){
-  alert(`Excluir o produto com id ${id}`)
-  fetch(`https://one022a-marketplace-e90o.onrender.com/produtos/${id}`, {
-    method: 'DELETE'
-  })
-  .then(resposta=>{
-    if(resposta.status ===200){
-      alert("Produto excluído com sucesso")
-      window.location.reload()
-    }else{
-      alert("Erro ao excluir o produto: Confira o terminal do backend")
-    }
-  })
-}
-
 function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [usuario, setUsuario] = useState('');
@@ -108,7 +93,20 @@ function App() {
   const filteredPistas = pistas.filter((pista) =>
     pista.nome.toLowerCase().includes(searchText.toLowerCase())
   );
-
+  function handleExcluir(id:number){
+    alert(`Excluir o produto com id ${id}`)
+    fetch(`https://one022a-marketplace-e90o.onrender.com/produtos/${id}`, {
+      method: 'DELETE'
+    })
+    .then(resposta=>{
+      if(resposta.status ===200){
+        alert("Produto excluído com sucesso")
+        window.location.reload()
+      }else{
+        alert("Erro ao excluir o produto: Confira o terminal do backend")
+      }
+    })
+  }
   return (
     <>
       {showLogin && (
@@ -192,9 +190,9 @@ function App() {
               onMouseLeave={() => handleMouseLeave(produto.id)}
             >
               <h3 className="produto-nome">{produto.nome}</h3>
-              <button onClick={() => handleExcluir(produto.id)}>Excluir</button>
-              <Link to={`/alterar-produto/${produto.id}`} className="botao-comprar">Alterar</Link>
               <div className="container-imagem">
+              <button onClick={() => handleExcluir(produto.id)}>Excluir</button>
+                <Link to={`/alterar-produto/${produto.id}`} className="botao-comprar">Alterar</Link>
                 <div className="image-container">
                   <img
                     src={produto.imagem}
