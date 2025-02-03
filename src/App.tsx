@@ -111,7 +111,7 @@ function App() {
       console.error("Erro ao excluir produto:", erro);
     }
   };
-  const handleEditProduto = async (id: number) => {
+  /*const handleEditProduto = async (id: number) => {
     const novoNome = prompt("Novo nome do produto:");
     const novaDescricao = prompt("Nova descrição:");
     const novoPreco = prompt("Novo preço:");
@@ -149,7 +149,7 @@ function App() {
     } catch (erro) {
       console.error("Erro ao atualizar produto:", erro);
     }
-  };
+  };*/
   return (
     <>
       {showLogin && (
@@ -299,8 +299,8 @@ function App() {
               <button className="botao-comprar" disabled={produto.estoque <= 0}>
                 {produto.estoque > 0 ? 'Comprar' : 'Indisponível'}
               </button>
-              <button onClick={() => handleEditProduto(produto.id)} className="botao-editar">Editar</button>
-<button onClick={() => handleDeleteProduto(produto.id)} className="botao-deletar">Excluir</button>
+              <button onClick={() => handleDeleteProduto(produto.id)}>Excluir</button>
+              <Link to={`/alterar-produto/${produto.id}`} className="botao-comprar">Alterar</Link>
             </div>
           ))}
         </div>
