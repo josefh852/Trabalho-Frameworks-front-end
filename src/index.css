@@ -215,6 +215,43 @@ header {
   transform: scale(1.05);
 }
 
+.botoes-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.botao-editar, .botao-deletar {
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  text-align: center;
+}
+
+.botao-editar {
+  background-color: green;
+}
+
+.botao-editar:hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
+}
+
+.botao-deletar {
+  background-color: red;
+}
+
+.botao-deletar:hover {
+  background-color: darkred;
+  transform: scale(1.05);
+}
+
 @media (max-width: 1024px) {
   .produto-item, .usuario-item {
     width: calc(50% - 1rem);

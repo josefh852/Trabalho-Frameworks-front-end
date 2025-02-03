@@ -9,7 +9,7 @@ type ProdutoType = {
   preco: string;
   descricao: string;
   imagem: string;
-  imagemSecundaria: string;
+  imagem2: string;
   estoque: number;
 };
 
@@ -19,7 +19,7 @@ type PistaType = {
   preco: string;
   descricao: string;
   imagem: string;
-  imagemSecundaria: string;
+  imagem2: string;
   estoque: number;
 };
 
@@ -93,20 +93,63 @@ function App() {
   const filteredPistas = pistas.filter((pista) =>
     pista.nome.toLowerCase().includes(searchText.toLowerCase())
   );
-  function handleExcluir(id:number){
-    alert(`Excluir o produto com id ${id}`)
-    fetch(`https://trabalho-frameworks.onrender.com/produtos${id}`, {
-      method: 'DELETE'
-    })
-    .then(resposta=>{
-      if(resposta.status ===200){
-        alert("Produto excluído com sucesso")
-        window.location.reload()
-      }else{
-        alert("Erro ao excluir o produto: Confira o terminal do backend")
+  const handleDeleteProduto = async (id: number) => {
+    if (!window.confirm("Tem certeza que deseja excluir este produto?")) return;
+  
+    try {
+      const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`, {
+        method: "DELETE",
+      });
+  
+      if (resposta.ok) {
+        alert("Produto excluído com sucesso!");
+        setProdutos(produtos.filter((produto) => produto.id !== id)); // Atualiza a lista removendo o item deletado
+      } else {
+        alert("Erro ao excluir produto.");
       }
-    })
-  }
+    } catch (erro) {
+      console.error("Erro ao excluir produto:", erro);
+    }
+  };
+  const handleEditProduto = async (id: number) => {
+    const novoNome = prompt("Novo nome do produto:");
+    const novaDescricao = prompt("Nova descrição:");
+    const novoPreco = prompt("Novo preço:");
+    const novaImagem = prompt("Nova URL da imagem:");
+    const novaImagem2 = prompt("Nova URL da imagem:");
+  
+    if (!novoNome || !novaDescricao || !novoPreco || !novaImagem || !novaImagem2) return;
+  
+    try {
+      const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: novoNome,
+          descricao: novaDescricao,
+          preco: novoPreco,
+          imagem: novaImagem,
+          imagem2: novaImagem2,
+        }),
+      });
+  
+      if (resposta.ok) {
+        alert("Produto atualizado com sucesso!");
+        setProdutos(
+          produtos.map((produto) =>
+            produto.id === id
+              ? { ...produto, nome: novoNome, descricao: novaDescricao, preco: novoPreco, imagem: novaImagem,  imagem2: novaImagem2 }
+              : produto
+          )); // Atualiza a lista com os novos valores
+      } else {
+        alert("Erro ao atualizar produto.");
+      }
+    } catch (erro) {
+      console.error("Erro ao atualizar produto:", erro);
+    }
+  };
   return (
     <>
       {showLogin && (
@@ -191,8 +234,6 @@ function App() {
             >
               <h3 className="produto-nome">{produto.nome}</h3>
               <div className="container-imagem">
-              <button onClick={() => handleExcluir(produto.id)}>Excluir</button>
-                <Link to={`/alterar-produto/${produto.id}`} className="botao-comprar">Alterar</Link>
                 <div className="image-container">
                   <img
                     src={produto.imagem}
@@ -204,7 +245,7 @@ function App() {
                   />
                   {activeProdutoImage[produto.id] === 1 && (
                     <img
-                      src={produto.imagemSecundaria}
+                      src={produto.imagem2}
                       alt="Imagem secundária do produto"
                       style={{
                         width: '100%',
@@ -258,6 +299,8 @@ function App() {
               <button className="botao-comprar" disabled={produto.estoque <= 0}>
                 {produto.estoque > 0 ? 'Comprar' : 'Indisponível'}
               </button>
+              <button onClick={() => handleEditProduto(produto.id)} className="botao-editar">Editar</button>
+<button onClick={() => handleDeleteProduto(produto.id)} className="botao-deletar">Excluir</button>
             </div>
           ))}
         </div>
@@ -286,7 +329,7 @@ function App() {
                   />
                   {activePistaImage[pista.id] === 1 && (
                     <img
-                      src={pista.imagemSecundaria}
+                      src={pista.imagem2}
                       alt="Imagem secundária da pista"
                       style={{
                         width: '100%',
