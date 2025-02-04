@@ -85,10 +85,12 @@ function CadastroProduto(){
                 <div>
                 <label htmlFor="imagem">URL Imagem</label>
                     <input placeholder="URL Imagem" type="text" name="imagem" id="imagem" onChange={handleImagem} />
+                    {imagem && <img className="imagem-produto-reduzida" src={imagem} alt="Imagem do Produto" />}
                 </div>
                 <div>
                 <label htmlFor="imagem2">URL Imagem2</label>
                     <input placeholder="URL Imagem2" type="text" name="imagem2" id="imagem2" onChange={handleImagem2} />
+                    {imagem && <img className="imagem2-produto-reduzida" src={imagem2} alt="Imagem do Produto" />}
                 </div>
                 <div>
                 <label htmlFor="estoque">Estoque</label>
