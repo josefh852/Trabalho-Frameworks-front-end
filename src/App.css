@@ -42,9 +42,7 @@
   transition: color 0.2s;
 }
 
-.navigation a:hover {
-  color: red;
-}
+
 
 .header-actions .login-button {
   padding: 0.8rem;
@@ -69,7 +67,9 @@
   }
 
   .navigation ul {
+    justify-content: space-between;
     flex-direction: column;
+    align-items: center;
     width: 100%;
   }
 
@@ -375,35 +375,6 @@
   color: #007bff;
 }
 
-.login-form-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Fundo escuro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.login-form-content {
-  background-color: white;
-  padding: 3rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px; /* Tamanho máximo do formulário */
-  text-align: center;
-}
-
-.login-title {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: blue;
-}
-
 .form-group {
   margin-bottom: 1.5rem;
   text-align: left;
@@ -418,11 +389,11 @@
 }
 
 .form-group input {
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
+  color: #333;
 }
 
 .form-group input:focus {

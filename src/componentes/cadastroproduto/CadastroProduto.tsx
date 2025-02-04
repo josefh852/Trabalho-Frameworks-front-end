@@ -1,5 +1,6 @@
-import {  ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+
 function CadastroProduto(){
     const navigate = useNavigate()
     const [id,setId] = useState("")
@@ -7,10 +8,12 @@ function CadastroProduto(){
     const [descricao,setDescricao] = useState("")
     const [preco,setPreco] = useState("")
     const [imagem,setImagem] = useState("")
+    const [imagem2,setImagem2] = useState("")
+    const [estoque,setEstoque] = useState("")
     async function handleForm(event:FormEvent){
         event.preventDefault()
         try{
-            const resposta = await fetch("https://one022a-marketplace-e90o.onrender.com/produtos",{
+            const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -20,7 +23,9 @@ function CadastroProduto(){
                     nome:nome,
                     descricao:descricao,
                     preco:preco,
-                    imagem:imagem
+                    imagem:imagem,
+                    imagem2:imagem2,
+                    estoque:estoque
                 })
             })
             if(resposta.status!=500){
@@ -52,9 +57,14 @@ function CadastroProduto(){
     function handleImagem(event:ChangeEvent<HTMLInputElement>){
         setImagem(event.target.value)
     }
+    function handleImagem2(event:ChangeEvent<HTMLInputElement>){
+        setImagem2(event.target.value)
+    }
+    function handleEstoque(event:ChangeEvent<HTMLInputElement>){
+        setEstoque(event.target.value)
+    }
     return(
         <>
-            <h1>Meu Componente de Cadastro de Produtos</h1>
             <form onSubmit={handleForm}>
                 <div>
                     <input placeholder="Id" type="text" name="id" id="id" onChange={handleId} />
@@ -71,10 +81,16 @@ function CadastroProduto(){
                 <div>
                     <input placeholder="URL Imagem" type="text" name="imagem" id="imagem" onChange={handleImagem} />
                 </div>
-                <input type="submit" value="Cadastrar" />
+                <div>
+                    <input placeholder="URL Imagem2" type="text" name="imagem2" id="imagem2" onChange={handleImagem2} />
+                </div>
+                <div>
+                    <input placeholder="Estoque" type="text" name="estoque" id="estoque" onChange={handleEstoque} />
+                </div>
+                <input type="submit" className="alterar-botao" value="Cadastrar" />
             </form>
         </>
     )
 }
 
-export default CadastroProduto
+export default CadastroProduto;

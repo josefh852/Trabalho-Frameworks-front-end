@@ -66,32 +66,36 @@ header {
   background-color: red;
 }
 
-.site-header .logo:hover {
-  transform: rotate(360deg) scale(1.1);
-  filter: drop-shadow(0 0 10px #ffd700);
+.site-header {
+    background-color: blue;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
 }
 
+/* Estilização da navegação */
 .navigation ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaço entre os itens */
+    padding: 0;
+    margin: 0;
 }
 
+/* Estilização dos links */
 .navigation a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
 }
 
+/* Efeito hover nos links */
 .navigation a:hover {
-  color: #ffd700;
-  text-shadow: 2px 2px 6px red(0, 0, 0, 0.4);
+    background-color: #555;
 }
 
 .header-actions .login-button {
@@ -223,7 +227,7 @@ header {
 }
 
 .botao-editar, .botao-deletar {
-  width: 100%;
+  width: 89%;
   padding: 1rem;
   color: #fff;
   font-weight: bold;
@@ -307,4 +311,69 @@ header {
 
 .botao-flecha:focus {
   outline: none;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 95%;
+  border: 1px solid #d0d0d0;
+  padding: 40px;
+  border-radius: 5px;
+  background-color: #eee;
+  align-items: center;
+}
+
+form>div{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background-color: blue;
+  margin-top: auto;
+  width: 80%;
+  padding: 1rem;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  text-align: center;
+}
+form>div>input{
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid #d0d0d0;
+}
+
+.imagem-produto-reduzida{
+  width: 60px;
+  height: auto;
+}
+
+.imagem2-produto-reduzida{
+  width: 60px;
+  height: auto;
+}
+
+div{
+  box-sizing: border-box;
+}
+
+.alterar-produto{
+  margin-top: auto;
+  align-items: center;
+  justify-content: space-between;
+  color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.alterar-botao{
+  background-color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
 }

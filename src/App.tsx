@@ -24,25 +24,12 @@ type PistaType = {
 };
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-  const [usuario, setUsuario] = useState('');
-  const [senha, setSenha] = useState('');
   const [produtos, setProdutos] = useState<ProdutoType[]>([]);
   const [pistas, setPistas] = useState<PistaType[]>([]);
   const [activeProdutoImage, setActiveProdutoImage] = useState<{ [key: number]: number }>({});
   const [activePistaImage, setActivePistaImage] = useState<{ [key: number]: number }>({});
   const [isHovered, setIsHovered] = useState<{ [key: number]: boolean }>({});
   const [searchText, setSearchText] = useState('');
-
-  const handleLoginClick = () => {
-    setShowLogin(!showLogin);
-  };
-
-  const handleLoginSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    alert(`Usuário: ${usuario} \nSenha: ${senha}`);
-    setShowLogin(false);
-  };
 
   const handleProdutoImageChange = (produtoId: number, index: number) => {
     setActiveProdutoImage((prevState) => ({
@@ -111,80 +98,9 @@ function App() {
       console.error("Erro ao excluir produto:", erro);
     }
   };
-  /*const handleEditProduto = async (id: number) => {
-    const novoNome = prompt("Novo nome do produto:");
-    const novaDescricao = prompt("Nova descrição:");
-    const novoPreco = prompt("Novo preço:");
-    const novaImagem = prompt("Nova URL da imagem:");
-    const novaImagem2 = prompt("Nova URL da imagem:");
-  
-    if (!novoNome || !novaDescricao || !novoPreco || !novaImagem || !novaImagem2) return;
-  
-    try {
-      const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome: novoNome,
-          descricao: novaDescricao,
-          preco: novoPreco,
-          imagem: novaImagem,
-          imagem2: novaImagem2,
-        }),
-      });
-  
-      if (resposta.ok) {
-        alert("Produto atualizado com sucesso!");
-        setProdutos(
-          produtos.map((produto) =>
-            produto.id === id
-              ? { ...produto, nome: novoNome, descricao: novaDescricao, preco: novoPreco, imagem: novaImagem,  imagem2: novaImagem2 }
-              : produto
-          )); // Atualiza a lista com os novos valores
-      } else {
-        alert("Erro ao atualizar produto.");
-      }
-    } catch (erro) {
-      console.error("Erro ao atualizar produto:", erro);
-    }
-  };*/
+
   return (
     <>
-      {showLogin && (
-        <div className="login-form-container">
-          <div className="login-form-content">
-            <h2 className="login-title">Login</h2>
-            <form onSubmit={handleLoginSubmit}>
-              <div className="form-group">
-                <label htmlFor="usuario">Usuário</label>
-                <input
-                  type="text"
-                  id="usuario"
-                  value={usuario}
-                  onChange={(e) => setUsuario(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="senha">Senha</label>
-                <input
-                  type="password"
-                  id="senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                />
-              </div>
-              <button type="submit" className="submit-button">
-                Entrar
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
       <header className="site-header">
         <img src={logo} width={150} height={70} alt="Logo" />
         <nav className="navigation">
@@ -209,17 +125,14 @@ function App() {
               <Link to="/cadastro-pista">Pistas</Link>
             </li>
             <li>
-              <a href="#conjuntos_e_expansoes_de_pistas">
-                Conjuntos e Expansões
-              </a>
+              <a href="#conjuntos_e_expansoes_de_pistas">Conjunto e Expansões</a>
+            </li>
+            <li>
+              <Link to="/cadastro-produto">Cadastrar</Link>
             </li>
           </ul>
         </nav>
-        <div className="header-actions">
-          <button className="login-button" onClick={handleLoginClick}>
-            Login
-          </button>
-        </div>
+
       </header>
 
       <div className="produtos-container">
@@ -300,7 +213,7 @@ function App() {
                 {produto.estoque > 0 ? 'Comprar' : 'Indisponível'}
               </button>
               <button onClick={() => handleDeleteProduto(produto.id)}>Excluir</button>
-              <Link to={`/alterar-produto/${produto.id}`} className="botao-comprar">Alterar</Link>
+              <Link to={`/alterar-produto/${produto.id}`} className="botao-editar">Alterar</Link>
             </div>
           ))}
         </div>

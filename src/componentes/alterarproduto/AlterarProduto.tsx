@@ -1,16 +1,19 @@
 import { useParams } from "react-router-dom";
 import { ChangeEvent, FormEvent, useState , useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+
 function AlterarProduto(){
     const { id } = useParams()
     useEffect(()=>{
-        fetch(`https://one022a-marketplace-e90o.onrender.com/produtos/${id}`)
+        fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`)
         .then(resposta=>resposta.json())
         .then(dados=>{
             setNome(dados.nome)
             setDescricao(dados.descricao)
             setPreco(dados.preco)
             setImagem(dados.imagem)
+            setImagem2(dados.imagem2)
+            setEstoque(dados.estoque)
         })
     },[])
     const navigate = useNavigate()
@@ -18,10 +21,12 @@ function AlterarProduto(){
     const [descricao,setDescricao] = useState("")
     const [preco,setPreco] = useState("")
     const [imagem,setImagem] = useState("")
+    const [imagem2,setImagem2] = useState("")
+    const [estoque,setEstoque] = useState("")
     async function handleForm(event:FormEvent){
         event.preventDefault()
         try{
-            const resposta = await fetch(`https://one022a-marketplace-e90o.onrender.com/produtos/${id}`,{
+            const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json"
@@ -30,7 +35,9 @@ function AlterarProduto(){
                     nome:nome,
                     descricao:descricao,
                     preco:preco,
-                    imagem:imagem
+                    imagem:imagem,
+                    imagem2:imagem2,
+                    estoque:estoque
                 })
             })
             if(resposta.status!=500){
@@ -59,9 +66,14 @@ function AlterarProduto(){
     function handleImagem(event:ChangeEvent<HTMLInputElement>){
         setImagem(event.target.value)
     }
+    function handleImagem2(event:ChangeEvent<HTMLInputElement>){
+        setImagem2(event.target.value)
+    }
+    function handleEstoque(event:ChangeEvent<HTMLInputElement>){
+        setEstoque(event.target.value)
+    }
     return(
         <>
-            <h1>Alterar</h1>
             <form onSubmit={handleForm}>
                 <div>
                     <label htmlFor="id">Id</label>
@@ -85,7 +97,16 @@ function AlterarProduto(){
                     {imagem && <img className="imagem-produto-reduzida" src={imagem} alt="Imagem do Produto" />}
                 </div>
                 <div>
-                    <input type="submit" value="Alterar" />
+                    <label htmlFor="imagem2">URL Imagem2</label>
+                    <input placeholder="URL Imagem2" type="text" name="imagem2" id="imagem2" value={imagem2} onChange={handleImagem2} />
+                    {imagem && <img className="imagem2-produto-reduzida" src={imagem2} alt="Imagem do Produto" />}
+                </div>
+                <div>
+                    <label htmlFor="estoque">Estoque</label>
+                    <input placeholder="Estoque" type="text" name="estoque" id="estoque" value={estoque} onChange={handleEstoque} />
+                </div>
+                <div>
+                    <input type="submit" className="alterar-botao" value="Alterar" />
                 </div>
             </form>
         </>
