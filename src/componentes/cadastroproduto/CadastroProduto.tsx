@@ -13,7 +13,7 @@ function CadastroProduto(){
     async function handleForm(event:FormEvent){
         event.preventDefault()
         try{
-            const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos/${id}`,{
+            const resposta = await fetch(`https://trabalho-frameworks.onrender.com/produtos`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -67,24 +67,31 @@ function CadastroProduto(){
         <>
             <form onSubmit={handleForm}>
                 <div>
+                <label htmlFor="id">Id</label>
                     <input placeholder="Id" type="text" name="id" id="id" onChange={handleId} />
                 </div>
                 <div>
+                <label htmlFor="nome">Nome</label>
                     <input placeholder="Nome" type="text" name="nome" id="nome" onChange={handleNome} />
                 </div>
                 <div>
+                <label htmlFor="descricao">Descrição</label>
                     <input placeholder="Descrição" type="text" name="descricao" id="descricao" onChange={handleDescricao} />
                 </div>
                 <div>
+                <label htmlFor="preco">Preço</label>
                     <input placeholder="Preço" type="text" name="preco" id="preco" onChange={handlePreco} />
                 </div>
                 <div>
+                <label htmlFor="imagem">URL Imagem</label>
                     <input placeholder="URL Imagem" type="text" name="imagem" id="imagem" onChange={handleImagem} />
                 </div>
                 <div>
+                <label htmlFor="imagem2">URL Imagem2</label>
                     <input placeholder="URL Imagem2" type="text" name="imagem2" id="imagem2" onChange={handleImagem2} />
                 </div>
                 <div>
+                <label htmlFor="estoque">Estoque</label>
                     <input placeholder="Estoque" type="text" name="estoque" id="estoque" onChange={handleEstoque} />
                 </div>
                 <input type="submit" className="alterar-botao" value="Cadastrar" />
